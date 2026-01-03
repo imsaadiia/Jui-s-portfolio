@@ -60,15 +60,66 @@ body {
   cursor: pointer;
 }
 
-/* SECTIONS */
+/* Default for all sections */
 .section {
-  min-height: 100vh;
+  min-height: 50vh;  /* baki sob section er jonno */
   padding: 100px 10%;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
+/* Home Section */
+.hero {
+  position: relative;
+  min-height: 80vh;      /* jemon age decide kora hoyechilo */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  /* Background Image */
+  background: url('sadiajui.jpeg') center/cover no-repeat;
+  background-attachment: fixed;   /* <-- key for scroll effect */
+  background-size: cover;
+  background-position: center;
+  color: #ffffff;                /* text white */
+  padding: 100px 10%;
+}
+
+
+/* Optional: overlay halo effect */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.35);   /* subtle dark overlay */
+  z-index: 0;
+}
+.hero h1,
+.hero p,
+.hero a {
+  position: relative;
+  z-index: 1;    /* content above the overlay */
+}
+@media (max-width: 768px) {
+  .hero {
+    background-attachment: scroll;  /* fallback for mobile */
+  }
+}
+
+/* Home section এর jonno alada height */
+.hero {
+  min-height: 80vh;  /* Home section ke lamba korlam */
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 60vh;  /* Mobile e ektu chhoto */
+  }
+}
 .hero h1 {
   font-size: 52px;
 }
@@ -111,12 +162,119 @@ body {
   background: var(--bg);
   box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
+/* Default light mode */
+.about-section {
+  padding: 60px 10%;
+  background: #f0eff8; /* light card */
+  border-radius: 25px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  margin: 80px auto;
+  max-width: 1000px;
+  color: #1a1a1a; /* text dark */
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .about-section {
+    background: #2c2c3c; /* dark card background */
+    color: #f5f5f5;      /* light text */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5); /* stronger shadow for dark mode */
+  }
+}
+
+.about-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+/* Text part */
+.about-text {
+  flex: 1;
+}
+
+/* Image part */
+.about-image {
+  flex: 1;
+  text-align: center;
+}
+
+.about-image img {
+  width: 280px;
+  max-width: 100%;
+  border-radius: 20px;   /* soft professional look */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Default card style */
+.cards .card {
+  background: #ffffff;   /* always white */
+  color: #1a1a1a;       /* text dark */
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  flex: 1;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+/* Optional: hover effect */
+.cards .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+
+@media (prefers-color-scheme: dark) {
+  /* Keep card white in dark mode */
+  .cards .card {
+    background: #ffffff; /* still white */
+    color: #1a1a1a;     /* text stays dark */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+
+  /* Section background can be dark */
+  #skills-page {
+    background: #1f1f2a;  /* dark section background */
+  }
+}
+
 
 /* WORK */
+/* Default light mode card */
 .work-box {
-  padding: 30px;
-  border-left: 4px solid var(--accent);
+  background: #ffffff;        /* always white */
+  color: #1a1a1a;            /* text dark */
+  padding: 25px 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  margin: 20px 0;
+  max-width: 600px;           /* optional width */
+  transition: all 0.3s ease;
 }
+
+/* Optional hover effect */
+.work-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+@media (prefers-color-scheme: dark) {
+  /* Section background dark */
+  #work-page {
+    background: #1f1f2a;  /* dark section */
+  }
+
+  /* Keep work boxes white with dark text */
+  .work-box {
+    background: #ffffff;   /* card stays white */
+    color: #1a1a1a;       /* text stays dark */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+}
+
 
 /* CONTACT */
 .social {
